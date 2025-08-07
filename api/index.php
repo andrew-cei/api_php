@@ -41,9 +41,11 @@ $database = new Database(
 
 $user_gateway = new UserGateway($database);
 
-$auth = new Auth($user_gateway);
+$codec = new JWTCodec($_ENV["SECRET_KEY"]);
 
-if (! $auth->authenticateAPIKey()) {
+$auth = new Auth($user_gateway, $codec);
+
+if (! $auth->authenticateAccessToken()) {
     exit;
 }
 
