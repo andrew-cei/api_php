@@ -39,3 +39,4 @@ $database = new Database(
 $refresh_token_gateway = new RefreshTokenGateway($database, $_ENV["SECRET_KEY"]);
 // Borrado del token de la DB
 $refresh_token_gateway->delete($data["token"]);
+echo json_encode(["message" => "refresh token deleted"]);

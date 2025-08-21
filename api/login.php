@@ -38,7 +38,7 @@ if( !password_verify($data["password"], $user["password_hash"])) {
 $codec = new JWTCodec($_ENV["SECRET_KEY"]);
 
 require __DIR__ . "/tokens.php";
-// Creación del objeto gestor de tpkens
+// Creación del objeto gestor de tokens
 $refresh_token_gateway = new RefreshTokenGateway($database, $_ENV["SECRET_KEY"]);
 // Creación de nuevo token
 $refresh_token_gateway->create($refresh_token, $refresh_token_expiry);
